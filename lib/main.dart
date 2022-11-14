@@ -21,37 +21,48 @@ class HomeRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-          backgroundColor: Colors.white,
-          appBar: AppBar(
-              backgroundColor: Colors.white,
-              leading: Image.asset('images/jiit_logo.png'),
-              title: Center(
-                  child: Text('Welcome to JIIT',
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30,
-                          color: Colors.black)))),
-          body: Container(
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('images/bg_image.jpg'),
-                      opacity: 0.5,
-                      fit: BoxFit.cover)),
-              child: SafeArea(
-                  child: Column(
+      home: Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('images/bg_image.jpg'),
+                  opacity: 0.5,
+                  fit: BoxFit.cover)),
+          child: Scaffold(
+              backgroundColor: Colors.white38,
+              appBar: AppBar(
+                  elevation: 0,
+                  backgroundColor: Colors.white60,
+                  leading: Image.asset('images/jiit_logo.png'),
+                  title: Center(
+                      child: Text('Welcome to JIIT',
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30,
+                              color: Colors.black)))),
+              body: Container(
+                  child: SafeArea(
+                      child: Column(
                 children: [
                   Container(
                       padding: const EdgeInsets.fromLTRB(40, 80, 40, 30),
                       child: TextField(
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.black),
-                          // controller: nameController,
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'User Name',
-                            // errorText: 'Wrong User Name',
-                          ))),
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.black),
+                        // controller: nameController,
+                        decoration: const InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white70,
+                          border: InputBorder.none,
+                          enabledBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 1, color: Colors.white70),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
+                          ),
+                          labelText: 'User Name',
+                          // errorText: 'Wrong User Name',
+                        ),
+                      )),
                   Container(
                       // padding: EdgeInsets.fromLTRB(250, 50, 60, 10),
                       padding: const EdgeInsets.fromLTRB(40, 0, 40, 10),
@@ -61,7 +72,15 @@ class HomeRoute extends StatelessWidget {
                               fontWeight: FontWeight.bold, color: Colors.black),
                           // controller: nameController,
                           decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
+                            filled: true,
+                            fillColor: Colors.white70,
+                            border: InputBorder.none,
+                            enabledBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(width: 1, color: Colors.white70),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(20)),
+                            ),
                             labelText: 'Password',
                             // errorText: 'Wrong Password',
                           ))),
@@ -79,7 +98,7 @@ class HomeRoute extends StatelessWidget {
                                 color: Colors.black),
                           )))
                 ],
-              )))),
+              ))))),
     );
   }
 }
@@ -93,6 +112,7 @@ class SecondRoute extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
+            elevation: 2,
             backgroundColor: Colors.white,
             leading: Image.asset('images/jiit_logo.png'),
             title: Center(
