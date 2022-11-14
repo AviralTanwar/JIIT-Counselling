@@ -1,33 +1,33 @@
- {
+{
   "project_info": {
-    "project_number": "5604242369",
-    "project_id": "jiit-random-data",
-    "storage_bucket": "jiit-random-data.appspot.com"
+    "project_number": "258101681629",
+    "project_id": "jiit-counselling",
+    "storage_bucket": "jiit-counselling.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:5604242369:android:5909604fffdf75a50ef540",
+        "mobilesdk_app_id": "1:258101681629:android:d9cf7f60daf102b722aa34",
         "android_client_info": {
           "package_name": "com.example.jiit_counselling_trial1"
         }
       },
       "oauth_client": [
         {
-          "client_id": "5604242369-nk1slrckboebd0gsaq177a30u525a6t0.apps.googleusercontent.com",
+          "client_id": "258101681629-1e4b53g54llsubhqsq9obbtmfuimr8eb.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBa9bfebHdpJYTt3WmITm3OCpnmWQOkKSE"
+          "current_key": "AIzaSyCMISuTy1Whc5ApdOtFtaFn0AnyabYtAJE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "5604242369-nk1slrckboebd0gsaq177a30u525a6t0.apps.googleusercontent.com",
+              "client_id": "258101681629-1e4b53g54llsubhqsq9obbtmfuimr8eb.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
