@@ -27,7 +27,7 @@ class HomeRoute extends StatelessWidget {
               backgroundColor: Colors.white,
               leading: Image.asset('images/jiit_logo.png'),
               title: Center(
-                  child: Text('Welcome to JSS',
+                  child: Text('Welcome to JIIT',
                       style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 30,
