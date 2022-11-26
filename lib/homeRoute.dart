@@ -36,7 +36,6 @@ class HomeRoute extends StatelessWidget {
                       child: TextField(
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, color: Colors.black),
-                        // controller: nameController,
                         decoration: const InputDecoration(
                           filled: true,
                           fillColor: Colors.white70,
@@ -52,13 +51,11 @@ class HomeRoute extends StatelessWidget {
                         ),
                       )),
                   Container(
-                      // padding: EdgeInsets.fromLTRB(250, 50, 60, 10),
                       padding: const EdgeInsets.fromLTRB(40, 0, 40, 10),
                       child: TextField(
                           obscureText: true,
                           style: const TextStyle(
                               fontWeight: FontWeight.bold, color: Colors.black),
-                          // controller: nameController,
                           decoration: const InputDecoration(
                             filled: true,
                             fillColor: Colors.white70,
