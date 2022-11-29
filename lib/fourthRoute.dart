@@ -473,10 +473,10 @@ class subject3 extends StatefulWidget {
 }
 
 class _subject3State extends State<subject3> {
-  String dropdownvalue = 'Subject3';
+  String dropdownvalue = 'Subject 3';
   // List of items in our dropdown menu
   var items = [
-    'Subject3',
+    'Subject 3',
     'Chemistry',
     'Computer Science',
     'Informatics Practices',

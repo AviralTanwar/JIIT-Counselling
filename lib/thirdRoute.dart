@@ -259,28 +259,16 @@ class ThirdRoute extends StatelessWidget {
                       ),
                     ),
                     new Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(60, 10, 40, 1),
-                        child: TextField(
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-// controller: nameController,
-                            decoration: const InputDecoration(
-                                filled: true,
-                                fillColor: Colors.white70,
-                                border: OutlineInputBorder(),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(width: 1, color: Colors.black),
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(10)),
-                                ),
-                                labelText: "State Code"
-// errorText: 'Wrong Password',
-                                )),
-                      ),
-                    ),
+                        child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(60, 10, 40, 1),
+                          child: Text('State Code'),
+                        ),
+                      ],
+                    )),
                   ],
                 ),
               ),
@@ -435,18 +423,17 @@ class ThirdRoute extends StatelessWidget {
                             ],
                             maxLength: 10,
                             decoration: const InputDecoration(
-                                filled: true,
-                                fillColor: Colors.white70,
-                                border: OutlineInputBorder(),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(width: 1, color: Colors.black),
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(10)),
-                                ),
-                                labelText: "Mobile Number"
-// errorText: 'Wrong Password',
-                                )),
+                              filled: true,
+                              fillColor: Colors.white70,
+                              border: OutlineInputBorder(),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(width: 1, color: Colors.black),
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(10)),
+                              ),
+                              labelText: "Mobile Number",
+                            )),
                       ),
                     ),
                     new Flexible(
