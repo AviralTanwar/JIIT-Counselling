@@ -1,13 +1,31 @@
 import 'dart:async';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:flutter/services.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:jiit_counselling_trial1/firebase_options.dart';
 
 class ThirdRoute extends StatelessWidget {
   const ThirdRoute({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final nameController = TextEditingController();
+    final fNameController = TextEditingController();
+    final mNameController = TextEditingController();
+    final dobController = TextEditingController();
+    final natController = TextEditingController();
+    final adhrController = TextEditingController();
+    final genderController = TextEditingController();
+    final religionController = TextEditingController();
+    final addController = TextEditingController();
+    final distController = TextEditingController();
+    final pinController = TextEditingController();
+    final mobController = TextEditingController();
+    final landController = TextEditingController();
+    final emailController = TextEditingController();
     return MaterialApp(
         home: Scaffold(
       backgroundColor: Colors.white,
@@ -37,6 +55,8 @@ class ThirdRoute extends StatelessWidget {
               Container(
                   padding: const EdgeInsets.fromLTRB(40, 20, 40, 0),
                   child: TextField(
+                    controller: nameController,
+
                     style: const TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.black),
                     // controller: nameController,
@@ -56,6 +76,7 @@ class ThirdRoute extends StatelessWidget {
               Container(
                   padding: const EdgeInsets.fromLTRB(40, 30, 40, 15),
                   child: TextField(
+                      controller: fNameController,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.black),
                       // controller: nameController,
@@ -75,6 +96,7 @@ class ThirdRoute extends StatelessWidget {
               Container(
                   padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
                   child: TextField(
+                      controller: mNameController,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.black),
                       // controller: nameController,
@@ -94,6 +116,7 @@ class ThirdRoute extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
                 child: TextFormField(
+                    controller: dobController,
                     style: const TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.black),
                     keyboardType: TextInputType.number,
@@ -118,6 +141,7 @@ class ThirdRoute extends StatelessWidget {
               Container(
                   padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
                   child: TextField(
+                      controller: natController,
                       style: TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.black),
                       decoration: const InputDecoration(
@@ -136,6 +160,7 @@ class ThirdRoute extends StatelessWidget {
               Container(
                   padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
                   child: TextField(
+                      controller: adhrController,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.black),
                       // controller: nameController,
@@ -171,6 +196,7 @@ class ThirdRoute extends StatelessWidget {
               Container(
                   padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
                   child: TextField(
+                      controller: religionController,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.black),
                       // controller: nameController,
@@ -214,6 +240,7 @@ class ThirdRoute extends StatelessWidget {
               Container(
                   padding: const EdgeInsets.fromLTRB(40, 15, 40, 1),
                   child: TextField(
+                      controller: addController,
                       maxLines: 5,
                       minLines: 1,
                       style: const TextStyle(
@@ -239,6 +266,7 @@ class ThirdRoute extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(40, 10, 0, 1),
                         child: TextField(
+                            controller: distController,
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black),
@@ -275,6 +303,7 @@ class ThirdRoute extends StatelessWidget {
               Container(
                   padding: const EdgeInsets.fromLTRB(40, 10, 40, 15),
                   child: TextField(
+                      controller: pinController,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.black),
                       // controller: nameController,
@@ -413,6 +442,7 @@ class ThirdRoute extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(40, 10, 0, 1),
                         child: TextField(
+                            controller: mobController,
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black),
@@ -440,6 +470,7 @@ class ThirdRoute extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(20, 10, 40, 1),
                         child: TextField(
+                            controller: landController,
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black),
@@ -470,6 +501,7 @@ class ThirdRoute extends StatelessWidget {
               Container(
                   padding: const EdgeInsets.fromLTRB(40, 10, 40, 15),
                   child: TextField(
+                      controller: emailController,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.black),
                       // controller: nameController,
@@ -485,7 +517,39 @@ class ThirdRoute extends StatelessWidget {
                         // errorText: 'Wrong Password',
                       ))),
               ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
+                    final name = nameController.text;
+                    final fname = fNameController.text;
+                    final mname = mNameController.text;
+                    final dob = dobController.text;
+                    final nationality = natController.text;
+                    final adhaar = adhrController.text;
+                    final religion = religionController.text;
+                    final address = addController.text;
+                    final district = distController.text;
+                    final pincode = pinController.text;
+                    final mobile = mobController.text;
+                    final landline = landController.text;
+                    final email = emailController.text;
+                    final docUser = FirebaseFirestore.instance
+                        .collection('application')
+                        .doc();
+                    final json = {
+                      'name': name,
+                      'fname': fname,
+                      'mname': mname,
+                      'dob': dob,
+                      'nationality': nationality,
+                      'adhaar': adhaar,
+                      'religion': religion,
+                      'address': address,
+                      'district': district,
+                      'pincode': pincode,
+                      'mobile': mobile,
+                      'landline': landline,
+                      'email': email,
+                    };
+                    await docUser.set(json);
                     Navigator.pushNamed(context, '/FourthRoute');
                   },
                   child: Center(
