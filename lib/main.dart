@@ -9,6 +9,7 @@ import 'secondRoute.dart';
 import 'thirdRoute.dart';
 import 'fourthRoute.dart';
 import 'FifthRoute.dart';
+import 'SixthRoute.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,6 +22,7 @@ Future<void> main() async {
       '/third': (context) => const ThirdRoute(),
       '/FourthRoute': (context) => const FourthRoute(),
       '/FifthRoute': (context) => const FifthRoute(),
+      '/SixthRoute': (context) => const SixthRoute(),
     },
   ));
 }

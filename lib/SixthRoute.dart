@@ -3,8 +3,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class FifthRoute extends StatelessWidget {
-  const FifthRoute({Key? key}) : super(key: key);
+class SixthRoute extends StatelessWidget {
+  const SixthRoute({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class FifthRoute extends StatelessWidget {
           backgroundColor: Colors.white,
           leading: Image.asset('images/jiit_logo.png'),
           title: const Center(
-              child: Text('Welcome to JIIT (Page 5)',
+              child: Text('Welcome to JIIT',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 30,
@@ -25,99 +25,20 @@ class FifthRoute extends StatelessWidget {
         child: Column(
           children: [
             Container(
-                padding: EdgeInsets.fromLTRB(10, 20, 100, 0),
+                padding: EdgeInsets.fromLTRB(10, 15, 100, 15),
                 child: Center(
-                    child: Text('Demand draft Details',
+                    child: Text('Details of Qualifying Exam (10+2 Equivalent)',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
                             color: Colors.black)))),
             Container(
-                padding: EdgeInsets.fromLTRB(1, 2, 10, 15),
-                child: Center(
-                    child: Text(
-                        '(Not applicable in case Form is purchased on payment in cash or by post from Institute Counter)',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 13,
-                            color: Colors.black)))),
-            Container(
-              child: Row(
-                children: [
-                  new Flexible(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(40, 10, 0, 1),
-                      child: TextField(
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.black),
-// controller: nameController,
-                          keyboardType: TextInputType.number,
-                          inputFormatters: <TextInputFormatter>[
-                            FilteringTextInputFormatter.digitsOnly
-                          ],
-                          maxLength: 6,
-                          decoration: const InputDecoration(
-                            filled: true,
-                            fillColor: Colors.white70,
-                            border: OutlineInputBorder(),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(width: 1, color: Colors.black),
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(10)),
-                            ),
-                            labelText: "DD Number",
-                          )),
-                    ),
-                  ),
-                  new Flexible(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 10, 40, 20),
-                      child: TextFormField(
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.black),
-                          keyboardType: TextInputType.number,
-                          inputFormatters: [
-                            FilteringTextInputFormatter.digitsOnly,
-                            LengthLimitingTextInputFormatter(6),
-                            CardMonthInputFormatter(),
-                          ],
-                          decoration: const InputDecoration(
-                              filled: true,
-                              fillColor: Colors.white70,
-                              border: OutlineInputBorder(),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(width: 1, color: Colors.black),
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(10)),
-                              ),
-                              labelText: "Date of Birth"
-                              // errorText: 'Wrong Password',
-                              )),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-                padding: const EdgeInsets.fromLTRB(40, 1, 40, 1),
-                child: Text(
-                  "Amount= Rs1200/-",
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.black),
-                )),
-            Container(
                 child: Column(children: [
               Container(
-                  padding: const EdgeInsets.fromLTRB(40, 10, 40, 0),
+                  padding: const EdgeInsets.fromLTRB(40, 20, 40, 0),
                   child: TextField(
                     style: const TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.black),
-                    keyboardType: TextInputType.number,
-                    inputFormatters: <TextInputFormatter>[
-                      FilteringTextInputFormatter.digitsOnly
-                    ],
                     // controller: nameController,
                     decoration: const InputDecoration(
                       filled: true,
@@ -128,7 +49,7 @@ class FifthRoute extends StatelessWidget {
                         borderRadius:
                             const BorderRadius.all(Radius.circular(20)),
                       ),
-                      labelText: 'Bank',
+                      labelText: 'Name of the School',
                       // errorText: 'Wrong User Name',
                     ),
                   )),
@@ -594,28 +515,5 @@ class _subject3State extends State<subject3> {
       style: TextStyle(
           fontWeight: FontWeight.bold, color: Colors.black, fontSize: 15),
     );
-  }
-}
-
-class CardMonthInputFormatter extends TextInputFormatter {
-  @override
-  TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
-    var newText = newValue.text;
-    if (newValue.selection.baseOffset == 0) {
-      return newValue;
-    }
-    var buffer = StringBuffer();
-    for (int i = 0; i < newText.length; i++) {
-      buffer.write(newText[i]);
-      var nonZeroIndex = i + 1;
-      if (nonZeroIndex % 2 == 0 && nonZeroIndex != newText.length) {
-        buffer.write('/');
-      }
-    }
-    var string = buffer.toString();
-    return newValue.copyWith(
-        text: string,
-        selection: TextSelection.collapsed(offset: string.length));
   }
 }
