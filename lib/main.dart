@@ -9,7 +9,9 @@ import 'secondRoute.dart';
 import 'thirdRoute.dart';
 import 'fourthRoute.dart';
 import 'FifthRoute.dart';
-import 'SixthRoute.dart';
+import 'SixthRoute.dart'; //ADDED THIS
+import 'SeventhRoute.dart'; //ADDED THIS and REMOVE JS:DART
+import 'EightRoute.dart'; //ADDED THIS
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +24,9 @@ Future<void> main() async {
       '/third': (context) => const ThirdRoute(),
       '/FourthRoute': (context) => const FourthRoute(),
       '/FifthRoute': (context) => const FifthRoute(),
-      '/SixthRoute': (context) => const SixthRoute(),
+      '/SixthRoute': (context) => const SixthRoute(), //ADDED THIS
+      '/SeventhRoute': (context) => const SeventhRoute(), //ADDED THIS
+      '/EightRoute': (context) => const EightRoute(), //ADDED THIS
     },
   ));
 }

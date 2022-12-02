@@ -7,9 +7,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:jiit_counselling_trial1/firebase_options.dart';
 
-class ThirdRoute extends StatelessWidget {
+class ThirdRoute extends StatefulWidget {
   const ThirdRoute({Key? key}) : super(key: key);
 
+  @override
+  State<ThirdRoute> createState() => _ThirdRouteState();
+}
+
+class _ThirdRouteState extends State<ThirdRoute> {
   @override
   Widget build(BuildContext context) {
     final nameController = TextEditingController();
@@ -26,424 +31,448 @@ class ThirdRoute extends StatelessWidget {
     final mobController = TextEditingController();
     final landController = TextEditingController();
     final emailController = TextEditingController();
+
     return MaterialApp(
         home: Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-          elevation: 2,
-          backgroundColor: Colors.white,
-          leading: Image.asset('images/jiit_logo.png'),
-          title: const Center(
-              child: Text('Welcome to JIIT',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30,
-                      color: Colors.black)))),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-                padding: EdgeInsets.fromLTRB(50, 25, 50, 10),
-                child: Center(
-                    child: Text('Personal Info',
+            backgroundColor: Colors.white,
+            appBar: AppBar(
+                elevation: 2,
+                backgroundColor: Colors.white,
+                leading: Image.asset('images/jiit_logo.png'),
+                title: Center(
+                    child: Text('Welcome to JIIT',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 26,
+                            fontSize: 30,
                             color: Colors.black)))),
-            Container(
-                child: Column(children: [
-              Container(
-                  padding: const EdgeInsets.fromLTRB(40, 20, 40, 0),
-                  child: TextField(
-                    controller: nameController,
-
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black),
-                    // controller: nameController,
-                    decoration: const InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white24,
-                      border: OutlineInputBorder(),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(width: 1, color: Colors.black),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(20)),
-                      ),
-                      labelText: 'Name of the candidate',
-                      // errorText: 'Wrong User Name',
-                    ),
-                  )),
-              Container(
-                  padding: const EdgeInsets.fromLTRB(40, 30, 40, 15),
-                  child: TextField(
-                      controller: fNameController,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black),
-                      // controller: nameController,
-                      decoration: const InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white70,
-                          border: OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 1, color: Colors.black),
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(20)),
-                          ),
-                          labelText: "Father's Name"
-                          // errorText: 'Wrong Password',
-                          ))),
-              Container(
-                  padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
-                  child: TextField(
-                      controller: mNameController,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black),
-                      // controller: nameController,
-                      decoration: const InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white70,
-                          border: OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 1, color: Colors.black),
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(20)),
-                          ),
-                          labelText: "Mother's Name"
-                          // errorText: 'Wrong Password',
-                          ))),
-              Container(
-                padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
-                child: TextFormField(
-                    controller: dobController,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black),
-                    keyboardType: TextInputType.number,
-                    inputFormatters: [
-                      FilteringTextInputFormatter.digitsOnly,
-                      LengthLimitingTextInputFormatter(6),
-                      CardMonthInputFormatter(),
-                    ],
-                    decoration: const InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white70,
-                        border: OutlineInputBorder(),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(width: 1, color: Colors.black),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(20)),
-                        ),
-                        labelText: "Date of Birth (dd/mm/yy)"
-                        // errorText: 'Wrong Password',
-                        )),
-              ),
-              Container(
-                  padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
-                  child: TextField(
-                      controller: natController,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black),
-                      decoration: const InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white70,
-                          border: OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 1, color: Colors.black),
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(20)),
-                          ),
-                          labelText: "Nationality"
-                          // errorText: 'Wrong Password',
-                          ))),
-              Container(
-                  padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
-                  child: TextField(
-                      controller: adhrController,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black),
-                      // controller: nameController,
-                      keyboardType: TextInputType.number,
-                      inputFormatters: <TextInputFormatter>[
-                        FilteringTextInputFormatter.digitsOnly
-                      ],
-                      maxLength: 12,
-                      decoration: const InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white70,
-                        border: OutlineInputBorder(),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(width: 1, color: Colors.black),
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                        ),
-                        labelText: "Adhaar Number of the Candidate",
-                        // errorText: 'Wrong Password',
-                      ))),
-              Container(
-                  child: Row(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.fromLTRB(50, 15, 40, 15),
-                    child: gender(),
-                  ),
-                  Container(
-                    padding: EdgeInsets.fromLTRB(40, 15, 50, 15),
-                    child: category(),
-                  )
-                ],
-              )),
-              Container(
-                  padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
-                  child: TextField(
-                      controller: religionController,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black),
-                      // controller: nameController,
-                      decoration: const InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white70,
-                          border: OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 1, color: Colors.black),
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(20)),
-                          ),
-                          labelText: "Religion"
-                          // errorText: 'Wrong Password',
-                          ))),
-              Container(
-                  // padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
-                  child: Row(
-                children: [
-                  Container(
-                      padding: const EdgeInsets.fromLTRB(50, 15, 10, 15),
-                      child: Text(
-                        "Person with disability",
-                        style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                      )),
-                  Container(child: boxes()),
-                ],
-              )),
-              Container(
-                  padding: EdgeInsets.fromLTRB(0, 15, 220, 15),
-                  child: Center(
-                      child: Text('Permanent Address',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                              color: Colors.black)))),
-              Container(
-                  padding: const EdgeInsets.fromLTRB(40, 15, 40, 1),
-                  child: TextField(
-                      controller: addController,
-                      maxLines: 5,
-                      minLines: 1,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black),
-                      // controller: nameController,
-                      decoration: const InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white70,
-                          border: OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 1, color: Colors.black),
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(20)),
-                          ),
-                          labelText: "Address"
-                          // errorText: 'Wrong Password',
-                          ))),
-              Container(
-                child: Row(
+            body: Scrollbar(
+              //ADDED THIS
+              thumbVisibility: true, //always show scrollbar
+              thickness: 10, //width of scrollbar
+              radius: Radius.circular(10), //corner radius of scrollbar
+              scrollbarOrientation:
+                  ScrollbarOrientation.right, //which side to show scrollbar
+              child: SingleChildScrollView(
+                child: Column(
                   children: [
-                    new Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(40, 10, 0, 1),
+                    Container(
+                        padding: EdgeInsets.fromLTRB(50, 25, 50, 10),
+                        child: Center(
+                            child: Text('Personal Info',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 26,
+                                    color: Colors.black)))),
+                    Container(
+                        child: Column(children: [
+                      Container(
+                          padding: EdgeInsets.fromLTRB(40, 20, 40, 0),
+                          child: TextField(
+                            controller: nameController,
+
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            // controller: nameController,
+                            decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white24,
+                              border: OutlineInputBorder(),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(width: 1, color: Colors.black),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                              ),
+                              labelText: 'Name of the candidate',
+                              // errorText: 'Wrong User Name',
+                            ),
+                          )),
+                      Container(
+                          padding: EdgeInsets.fromLTRB(40, 30, 40, 15),
+                          child: TextField(
+                              controller: fNameController,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                              // controller: nameController,
+                              decoration: InputDecoration(
+                                  filled: true,
+                                  fillColor: Colors.white70,
+                                  border: OutlineInputBorder(),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        width: 1, color: Colors.black),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                  ),
+                                  labelText: "Father's Name"
+                                  // errorText: 'Wrong Password',
+                                  ))),
+                      Container(
+                          padding: EdgeInsets.fromLTRB(40, 15, 40, 15),
+                          child: TextField(
+                              controller: mNameController,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                              // controller: nameController,
+                              decoration: InputDecoration(
+                                  filled: true,
+                                  fillColor: Colors.white70,
+                                  border: OutlineInputBorder(),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        width: 1, color: Colors.black),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                  ),
+                                  labelText: "Mother's Name"
+                                  // errorText: 'Wrong Password',
+                                  ))),
+                      Container(
+                        padding: EdgeInsets.fromLTRB(40, 15, 40, 15),
+                        child: TextFormField(
+                            controller: dobController,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            keyboardType: TextInputType.number,
+                            inputFormatters: [
+                              FilteringTextInputFormatter.digitsOnly,
+                              LengthLimitingTextInputFormatter(6),
+                              CardMonthInputFormatter(),
+                            ],
+                            decoration: InputDecoration(
+                                filled: true,
+                                fillColor: Colors.white70,
+                                border: OutlineInputBorder(),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(width: 1, color: Colors.black),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                ),
+                                labelText: "Date of Birth (dd/mm/yy)"
+                                // errorText: 'Wrong Password',
+                                )),
+                      ),
+                      Container(
+                          padding: EdgeInsets.fromLTRB(40, 15, 40, 15),
+                          child: TextField(
+                              controller: natController,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                              decoration: InputDecoration(
+                                  filled: true,
+                                  fillColor: Colors.white70,
+                                  border: OutlineInputBorder(),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        width: 1, color: Colors.black),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                  ),
+                                  labelText: "Nationality"
+                                  // errorText: 'Wrong Password',
+                                  ))),
+                      Container(
+                          padding: EdgeInsets.fromLTRB(40, 15, 40, 15),
+                          child: TextField(
+                              controller: adhrController,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                              // controller: nameController,
+                              keyboardType: TextInputType.number,
+                              inputFormatters: <TextInputFormatter>[
+                                FilteringTextInputFormatter.digitsOnly,
+                                LengthLimitingTextInputFormatter(
+                                    12), //ADDED THIS
+                                CardNumberInputFormatter(), // ADDED THIS
+                              ],
+                              // maxLength: 16  REMOVE THIS
+                              decoration: InputDecoration(
+                                filled: true,
+                                fillColor: Colors.white70,
+                                border: OutlineInputBorder(),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(width: 1, color: Colors.black),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                ),
+                                labelText: "Adhaar Number of the Candidate",
+                                // errorText: 'Wrong Password',
+                              ))),
+                      Container(
+                        padding: EdgeInsets.fromLTRB(40, 15, 40, 1),
+                        width: MediaQuery.of(context).size.width,
+                        child: Container(
+                          padding: EdgeInsets.only(left: 10),
+                          decoration: BoxDecoration(
+                              color: Colors.white70,
+                              border: Border.all(color: Colors.black, width: 1),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: gender(),
+                        ),
+                      ),
+
+                      Container(
+                        padding: EdgeInsets.fromLTRB(40, 15, 40, 1),
+                        width: MediaQuery.of(context).size.width,
+                        child: Container(
+                          padding: EdgeInsets.only(left: 10),
+                          decoration: BoxDecoration(
+                              color: Colors.white70,
+                              border: Border.all(color: Colors.black, width: 1),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: category(),
+                        ),
+                      ),
+                      Container(
+                          padding: EdgeInsets.fromLTRB(40, 15, 40, 15),
+                          child: TextField(
+                              controller: religionController,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                              // controller: nameController,
+                              decoration: InputDecoration(
+                                  filled: true,
+                                  fillColor: Colors.white70,
+                                  border: OutlineInputBorder(),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        width: 1, color: Colors.black),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                  ),
+                                  labelText: "Religion"
+                                  // errorText: 'Wrong Password',
+                                  ))),
+                      Container(
+                          // padding:  EdgeInsets.fromLTRB(40, 15, 40, 15),
+                          child: Row(
+                        children: [
+                          Container(
+                              padding: EdgeInsets.fromLTRB(50, 15, 10, 15),
+                              child: Text(
+                                "Person with disability",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              )),
+                          Container(child: boxes()),
+                        ],
+                      )),
+                      Container(
+                          // padding: EdgeInsets.only(left: 20, right: 200),
+                          margin: EdgeInsets.only(top: 10),
+                          child: Text('Permanent Address',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  color: Colors.black))),
+                      Container(
+                          padding: EdgeInsets.fromLTRB(40, 15, 40, 1),
+                          child: TextField(
+                              controller: addController,
+                              maxLines: 5,
+                              minLines: 1,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                              // controller: nameController,
+                              decoration: InputDecoration(
+                                  filled: true,
+                                  fillColor: Colors.white70,
+                                  border: OutlineInputBorder(),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        width: 1, color: Colors.black),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                  ),
+                                  labelText: "Address"
+                                  // errorText: 'Wrong Password',
+                                  ))),
+                      Container(
+                        padding: EdgeInsets.fromLTRB(40, 15, 40, 1),
                         child: TextField(
                             controller: distController,
-                            style: const TextStyle(
+                            style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black),
-// controller: nameController,
-                            decoration: const InputDecoration(
+                            // controller: nameController,
+                            decoration: InputDecoration(
                                 filled: true,
                                 fillColor: Colors.white70,
                                 border: OutlineInputBorder(),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide:
                                       BorderSide(width: 1, color: Colors.black),
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(10)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
                                 ),
                                 labelText: "District"
 // errorText: 'Wrong Password',
                                 )),
                       ),
-                    ),
-                    new Flexible(
-                        child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(60, 10, 40, 1),
-                          child: Text('State Code'),
-                        ),
-                      ],
-                    )),
-                  ],
-                ),
-              ),
-              Container(
-                  padding: const EdgeInsets.fromLTRB(40, 10, 40, 15),
-                  child: TextField(
-                      controller: pinController,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black),
-                      // controller: nameController,
-                      keyboardType: TextInputType.number,
-                      inputFormatters: <TextInputFormatter>[
-                        FilteringTextInputFormatter.digitsOnly
-                      ],
-                      maxLength: 6,
-                      decoration: const InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white70,
-                        border: OutlineInputBorder(),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(width: 1, color: Colors.black),
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                        ),
-                        labelText: "Pincode",
-                        // errorText: 'Wrong Password',
-                      ))),
-              Container(
-                  padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
-                  child: Center(
-                      child: Text(
-                          'Current Correspondance Address (leave if same)',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                              color: Colors.black)))),
-              Container(
-                  padding: const EdgeInsets.fromLTRB(40, 15, 40, 1),
-                  child: TextField(
-                      maxLines: 5,
-                      minLines: 1,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black),
-                      // controller: nameController,
-                      decoration: const InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white70,
-                          border: OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 1, color: Colors.black),
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(20)),
-                          ),
-                          labelText: "Address"
-                          // errorText: 'Wrong Password',
-                          ))),
-              Container(
-                child: Row(
-                  children: [
-                    new Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(40, 10, 0, 1),
-                        child: TextField(
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-// controller: nameController,
-                            decoration: const InputDecoration(
+                      // ),
+                      Container(
+                        // color: Colors.red,
+                        padding: EdgeInsets.fromLTRB(40, 15, 40, 1),
+                        width: MediaQuery.of(context).size.width,
+                        child: Container(
+                          padding: EdgeInsets.only(left: 10),
+                          decoration: BoxDecoration(
+                              color: Colors.white70,
+                              border: Border.all(color: Colors.black, width: 1),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: statecode1(),
+                        ), //ADDED THIS
+                      ),
+                      // ],
+                      // ),
+                      Container(
+                          padding: EdgeInsets.fromLTRB(40, 10, 40, 15),
+                          child: TextField(
+                              controller: pinController,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                              // controller: nameController,
+                              keyboardType: TextInputType.number,
+                              inputFormatters: <TextInputFormatter>[
+                                FilteringTextInputFormatter.digitsOnly
+                              ],
+                              maxLength: 6,
+                              decoration: InputDecoration(
                                 filled: true,
                                 fillColor: Colors.white70,
                                 border: OutlineInputBorder(),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide:
                                       BorderSide(width: 1, color: Colors.black),
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(10)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                ),
+                                labelText: "Pincode",
+                                // errorText: 'Wrong Password',
+                              ))),
+                      Container(
+                          // padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
+                          margin: EdgeInsets.only(top: 10),
+                          child: Center(
+                              child: Text('''Current Correspondance Address 
+(leave if same)
+                                  ''',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                      color: Colors.black)))),
+                      Container(
+                          padding: EdgeInsets.fromLTRB(40, 0, 40, 1),
+                          child: TextField(
+                              maxLines: 5,
+                              minLines: 1,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                              // controller: nameController,
+                              decoration: InputDecoration(
+                                  filled: true,
+                                  fillColor: Colors.white70,
+                                  border: OutlineInputBorder(),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        width: 1, color: Colors.black),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                  ),
+                                  labelText: "Address"
+                                  // errorText: 'Wrong Password',
+                                  ))),
+                      Container(
+                        padding: EdgeInsets.fromLTRB(40, 15, 40, 1),
+                        child: TextField(
+                            controller: distController,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            // controller: nameController,
+                            decoration: InputDecoration(
+                                filled: true,
+                                fillColor: Colors.white70,
+                                border: OutlineInputBorder(),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(width: 1, color: Colors.black),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
                                 ),
                                 labelText: "District"
 // errorText: 'Wrong Password',
                                 )),
                       ),
-                    ),
-                    new Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(60, 10, 40, 1),
-                        child: TextField(
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-// controller: nameController,
-                            decoration: const InputDecoration(
+                      // ),
+                      Container(
+                        // color: Colors.red,
+                        padding: EdgeInsets.fromLTRB(40, 15, 40, 1),
+                        width: MediaQuery.of(context).size.width,
+                        child: Container(
+                          padding: EdgeInsets.only(left: 10),
+                          decoration: BoxDecoration(
+                              color: Colors.white70,
+                              border: Border.all(color: Colors.black, width: 1),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: statecode2(),
+                        ), //ADDED THIS
+                      ),
+                      Container(
+                          padding: EdgeInsets.fromLTRB(40, 10, 40, 15),
+                          child: TextField(
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                              // controller: nameController,
+                              keyboardType: TextInputType.number,
+                              inputFormatters: <TextInputFormatter>[
+                                FilteringTextInputFormatter.digitsOnly
+                              ],
+                              maxLength: 6,
+                              decoration: InputDecoration(
                                 filled: true,
                                 fillColor: Colors.white70,
                                 border: OutlineInputBorder(),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide:
                                       BorderSide(width: 1, color: Colors.black),
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(10)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
                                 ),
-                                labelText: "State Code"
-// errorText: 'Wrong Password',
-                                )),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                  padding: const EdgeInsets.fromLTRB(40, 10, 40, 15),
-                  child: TextField(
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black),
-                      // controller: nameController,
-                      keyboardType: TextInputType.number,
-                      inputFormatters: <TextInputFormatter>[
-                        FilteringTextInputFormatter.digitsOnly
-                      ],
-                      maxLength: 6,
-                      decoration: const InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white70,
-                        border: OutlineInputBorder(),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(width: 1, color: Colors.black),
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                        ),
-                        labelText: "Pincode",
-                        // errorText: 'Wrong Password',
-                      ))),
-              Container(
-                  padding: EdgeInsets.fromLTRB(0, 15, 271, 15),
-                  child: Center(
-                      child: Text('Contact Details',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                              color: Colors.black)))),
-              Container(
-                child: Row(
-                  children: [
-                    new Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(40, 10, 0, 1),
+                                labelText: "Pincode",
+                                // errorText: 'Wrong Password',
+                              ))),
+                      Container(
+                          // padding: EdgeInsets.fromLTRB(0, 15, 271, 15),
+                          margin: EdgeInsets.only(bottom: 10),
+                          child: Center(
+                              child: Text('Contact Details',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                      color: Colors.black)))),
+                      Container(
+                        // padding: EdgeInsets.fromLTRB(40, 10, 0, 1),
+                        margin: EdgeInsets.only(left: 40, right: 40),
                         child: TextField(
                             controller: mobController,
-                            style: const TextStyle(
+                            style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black),
 // controller: nameController,
@@ -452,7 +481,7 @@ class ThirdRoute extends StatelessWidget {
                               FilteringTextInputFormatter.digitsOnly
                             ],
                             maxLength: 10,
-                            decoration: const InputDecoration(
+                            decoration: InputDecoration(
                               filled: true,
                               fillColor: Colors.white70,
                               border: OutlineInputBorder(),
@@ -460,18 +489,17 @@ class ThirdRoute extends StatelessWidget {
                                 borderSide:
                                     BorderSide(width: 1, color: Colors.black),
                                 borderRadius:
-                                    const BorderRadius.all(Radius.circular(10)),
+                                    BorderRadius.all(Radius.circular(10)),
                               ),
                               labelText: "Mobile Number",
                             )),
                       ),
-                    ),
-                    new Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 10, 40, 1),
+                      Container(
+                        // padding: EdgeInsets.fromLTRB(20, 10, 40, 1),
+                        margin: EdgeInsets.only(left: 40, right: 40),
                         child: TextField(
                             controller: landController,
-                            style: const TextStyle(
+                            style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black),
 // controller: nameController,
@@ -480,92 +508,103 @@ class ThirdRoute extends StatelessWidget {
                               FilteringTextInputFormatter.digitsOnly
                             ],
                             maxLength: 11,
-                            decoration: const InputDecoration(
+                            decoration: InputDecoration(
                                 filled: true,
                                 fillColor: Colors.white70,
                                 border: OutlineInputBorder(),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide:
                                       BorderSide(width: 1, color: Colors.black),
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(10)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
                                 ),
                                 labelText: "LandLine No."
 // errorText: 'Wrong Password',
                                 )),
                       ),
-                    ),
+                      Container(
+                          padding: EdgeInsets.fromLTRB(40, 10, 40, 15),
+                          child: Form(
+                              //ADDED THIS
+                              autovalidateMode:
+                                  AutovalidateMode.always, //ADDED THIS
+                              child: TextFormField(
+                                  validator: (value) =>
+                                      validateEmail(value), //ADDED THIS
+                                  controller: emailController,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black),
+                                  // controller: nameController,
+                                  decoration: InputDecoration(
+                                    filled: true,
+                                    fillColor: Colors.white70,
+                                    border: OutlineInputBorder(),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          width: 1, color: Colors.black),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(20)),
+                                    ),
+                                    labelText: "Email-ID",
+                                    // errorText: 'Wrong Password',
+                                  )))),
+                      Container(
+                          margin: EdgeInsets.only(bottom: 30),
+                          child: ElevatedButton(
+                              onPressed: () async {
+                                final name = nameController.text;
+                                final fname = fNameController.text;
+                                final mname = mNameController.text;
+                                final dob = dobController.text;
+                                final nationality = natController.text;
+                                final adhaar = adhrController.text;
+                                final religion = religionController.text;
+                                final address = addController.text;
+                                final district = distController.text;
+                                final pincode = pinController.text;
+                                final mobile = mobController.text;
+                                final landline = landController.text;
+                                final email = emailController.text;
+                                // final docUser = FirebaseFirestore.instance
+                                //     .collection('application')
+                                //     .doc();
+                                final json = {
+                                  'name': name,
+                                  'fname': fname,
+                                  'mname': mname,
+                                  'dob': dob,
+                                  'nationality': nationality,
+                                  'adhaar': adhaar,
+                                  'religion': religion,
+                                  'address': address,
+                                  'district': district,
+                                  'pincode': pincode,
+                                  'mobile': mobile,
+                                  'landline': landline,
+                                  'email': email,
+                                };
+                                // await docUser.set(json);
+                                Navigator.pushReplacementNamed(
+                                    // ADDED THIS
+                                    context,
+                                    '/FourthRoute');
+                              },
+                              child: Center(
+                                  widthFactor: 1,
+                                  heightFactor: 1,
+                                  child: Text(
+                                    'Next Page',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black),
+                                  )))),
+                    ])),
+                    // Divider(height: 1),
                   ],
                 ),
               ),
-              Container(
-                  padding: const EdgeInsets.fromLTRB(40, 10, 40, 15),
-                  child: TextField(
-                      controller: emailController,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black),
-                      // controller: nameController,
-                      decoration: const InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white70,
-                        border: OutlineInputBorder(),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(width: 1, color: Colors.black),
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                        ),
-                        labelText: "Email-ID",
-                        // errorText: 'Wrong Password',
-                      ))),
-              ElevatedButton(
-                  onPressed: () async {
-                    final name = nameController.text;
-                    final fname = fNameController.text;
-                    final mname = mNameController.text;
-                    final dob = dobController.text;
-                    final nationality = natController.text;
-                    final adhaar = adhrController.text;
-                    final religion = religionController.text;
-                    final address = addController.text;
-                    final district = distController.text;
-                    final pincode = pinController.text;
-                    final mobile = mobController.text;
-                    final landline = landController.text;
-                    final email = emailController.text;
-                    final docUser = FirebaseFirestore.instance
-                        .collection('application')
-                        .doc();
-                    final json = {
-                      'name': name,
-                      'fname': fname,
-                      'mname': mname,
-                      'dob': dob,
-                      'nationality': nationality,
-                      'adhaar': adhaar,
-                      'religion': religion,
-                      'address': address,
-                      'district': district,
-                      'pincode': pincode,
-                      'mobile': mobile,
-                      'landline': landline,
-                      'email': email,
-                    };
-                    await docUser.set(json);
-                    Navigator.pushNamed(context, '/FourthRoute');
-                  },
-                  child: Center(
-                      widthFactor: 1,
-                      heightFactor: 1,
-                      child: Text(
-                        'Next Page',
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.black),
-                      ))),
-            ])),
-            // Divider(height: 1),
-          ],
-        ),
-      ),
-    ));
+            )));
     ;
   }
 }
@@ -594,7 +633,7 @@ class CardMonthInputFormatter extends TextInputFormatter {
 }
 
 class gender extends StatefulWidget {
-  const gender({Key? key}) : super(key: key);
+  gender({Key? key}) : super(key: key);
 
   @override
   State<gender> createState() => _genderState();
@@ -612,12 +651,13 @@ class _genderState extends State<gender> {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton(
+    return DropdownButtonHideUnderline(
+        child: DropdownButton(
       // Initial Value
       value: dropdownvalue,
 
       // Down Arrow Icon
-      icon: const Icon(Icons.keyboard_arrow_down),
+      icon: Icon(Icons.keyboard_arrow_down),
 
       // Array list of items
       items: items.map((String items) {
@@ -633,11 +673,12 @@ class _genderState extends State<gender> {
           dropdownvalue = newValue!;
         });
       },
-      borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+      borderRadius: BorderRadius.all(Radius.circular(10.0)),
       elevation: 12,
+      isExpanded: true,
       style: TextStyle(
           fontWeight: FontWeight.bold, color: Colors.black, fontSize: 15),
-    );
+    ));
   }
 }
 
@@ -660,11 +701,12 @@ class _categoryState extends State<category> {
   ];
   @override
   Widget build(BuildContext context) {
-    return DropdownButton(
+    return DropdownButtonHideUnderline(
+        child: DropdownButton(
       // Initial Value
       value: dropdownvalue,
       // Down Arrow Icon
-      icon: const Icon(Icons.keyboard_arrow_down),
+      icon: Icon(Icons.keyboard_arrow_down),
 
       // Array list of items
       items: items.map((String items) {
@@ -680,11 +722,12 @@ class _categoryState extends State<category> {
           dropdownvalue = newValue!;
         });
       },
-      borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+      borderRadius: BorderRadius.all(Radius.circular(10.0)),
       elevation: 12,
+      isExpanded: true,
       style: TextStyle(
           fontWeight: FontWeight.bold, color: Colors.black, fontSize: 15),
-    );
+    ));
   }
 }
 
@@ -744,5 +787,206 @@ class _boxesState extends State<boxes> {
         ),
       ],
     );
+  }
+}
+
+class CardNumberInputFormatter extends TextInputFormatter {
+  // ADDED THIS
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    var text = newValue.text;
+    if (newValue.selection.baseOffset == 0) {
+      return newValue;
+    }
+    var buffer = StringBuffer();
+    for (int i = 0; i < text.length; i++) {
+      buffer.write(text[i]);
+      var nonZeroIndex = i + 1;
+      if (nonZeroIndex % 4 == 0 && nonZeroIndex != text.length) {
+        buffer.write('  '); // Add double spaces.
+      }
+    }
+    var string = buffer.toString();
+    return newValue.copyWith(
+        text: string,
+        selection: TextSelection.collapsed(offset: string.length));
+  }
+}
+
+String validateEmail(String? value) {
+  //ADDED THIS
+  String pattern =
+      r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]"
+      r"{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]"
+      r"{0,253}[a-zA-Z0-9])?)*$";
+  RegExp regex = RegExp(pattern);
+  if (value == null || value.isEmpty || !regex.hasMatch(value))
+    return 'Enter a valid email address';
+  else
+    return "";
+}
+
+class statecode1 extends StatefulWidget {
+  const statecode1({Key? key}) : super(key: key);
+
+  @override
+  State<statecode1> createState() => _statecode1State();
+}
+
+class _statecode1State extends State<statecode1> {
+  String dropdownvalue = 'State Code';
+  // List of items in our dropdown menu
+  var items = [
+    'State Code',
+    'ANDHRA PRADESH',
+    'ARUNACHAL PRADESH',
+    'ASSAM',
+    'BIHAR',
+    'CHATTISGARH',
+    'GOA',
+    'GUJARAT',
+    'HARYANA',
+    'HIMACHAL PRADESH',
+    'JHARKHAND',
+    'KARNATAKA',
+    'KERALA',
+    'MADHYA PRADESH',
+    'MAHARASHTRA',
+    'MANIPUR',
+    'MEGHALAYA',
+    'MIZORAM',
+    'NAGALAND',
+    'ODISHA',
+    'PUNJAB',
+    'RAJASTHAN',
+    'SIKKIM',
+    'TAMIL NADU',
+    'TELANGANA',
+    'UTTAR PRADESH',
+    'UTTARAKHAND',
+    'WEST BENGAL',
+    'ANDAMAN AND NICOBAR',
+    'CHANDIGARH',
+    'DADRA NAGAR HAVELI',
+    'DAMAN DIU',
+    'DELHI',
+    'JAMMU AND KASHMIR',
+    'LAKSHADWEEP',
+    'LADAKH',
+    'PUDUCHERRY',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButtonHideUnderline(
+        child: DropdownButton(
+      // Initial Value
+      value: dropdownvalue,
+      // Down Arrow Icon
+      icon: Icon(Icons.keyboard_arrow_down),
+
+      // Array list of items
+      items: items.map((String items) {
+        return DropdownMenuItem(
+          value: items,
+          child: Text(items),
+        );
+      }).toList(),
+      // After selecting the desired option,it will
+      // change button value to selected value
+      onChanged: (String? newValue) {
+        setState(() {
+          dropdownvalue = newValue!;
+        });
+      },
+      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+      elevation: 12,
+      isExpanded: true,
+      style: TextStyle(
+          fontWeight: FontWeight.bold, color: Colors.black, fontSize: 15),
+    ));
+  }
+}
+
+class statecode2 extends StatefulWidget {
+  const statecode2({Key? key}) : super(key: key);
+
+  @override
+  State<statecode2> createState() => _statecode2State();
+}
+
+class _statecode2State extends State<statecode2> {
+  String dropdownvalue = 'State Code';
+  // List of items in our dropdown menu
+  var items = [
+    'State Code',
+    'ANDHRA PRADESH',
+    'ARUNACHAL PRADESH',
+    'ASSAM',
+    'BIHAR',
+    'CHATTISGARH',
+    'GOA',
+    'GUJARAT',
+    'HARYANA',
+    'HIMACHAL PRADESH',
+    'JHARKHAND',
+    'KARNATAKA',
+    'KERALA',
+    'MADHYA PRADESH',
+    'MAHARASHTRA',
+    'MANIPUR',
+    'MEGHALAYA',
+    'MIZORAM',
+    'NAGALAND',
+    'ODISHA',
+    'PUNJAB',
+    'RAJASTHAN',
+    'SIKKIM',
+    'TAMIL NADU',
+    'TELANGANA',
+    'UTTAR PRADESH',
+    'UTTARAKHAND',
+    'WEST BENGAL',
+    'ANDAMAN AND NICOBAR',
+    'CHANDIGARH',
+    'DADRA NAGAR HAVELI',
+    'DAMAN DIU',
+    'DELHI',
+    'JAMMU AND KASHMIR',
+    'LAKSHADWEEP',
+    'LADAKH',
+    'PUDUCHERRY',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButtonHideUnderline(
+        child: DropdownButton(
+      // Initial Value
+      value: dropdownvalue,
+      // Down Arrow Icon
+      icon: Icon(Icons.keyboard_arrow_down),
+
+      // Array list of items
+      items: items.map((String items) {
+        return DropdownMenuItem(
+          value: items,
+          child: Text(items),
+        );
+      }).toList(),
+      // After selecting the desired option,it will
+      // change button value to selected value
+      onChanged: (String? newValue) {
+        setState(() {
+          dropdownvalue = newValue!;
+        });
+      },
+      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+      elevation: 12,
+      isExpanded: true,
+      style: TextStyle(
+          fontWeight: FontWeight.bold, color: Colors.black, fontSize: 15),
+    ));
   }
 }

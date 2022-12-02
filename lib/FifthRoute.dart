@@ -10,590 +10,318 @@ class FifthRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-          elevation: 2,
-          backgroundColor: Colors.white,
-          leading: Image.asset('images/jiit_logo.png'),
-          title: const Center(
-              child: Text('Welcome to JIIT (Page 5)',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30,
-                      color: Colors.black)))),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-                padding: EdgeInsets.fromLTRB(10, 20, 100, 0),
-                child: Center(
-                    child: Text('Demand draft Details',
+            backgroundColor: Colors.white,
+            appBar: AppBar(
+                elevation: 2,
+                backgroundColor: Colors.white,
+                leading: Image.asset('images/jiit_logo.png'),
+                title: const Center(
+                    child: Text('Welcome to JIIT',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 20,
+                            fontSize: 30,
                             color: Colors.black)))),
-            Container(
-                padding: EdgeInsets.fromLTRB(1, 2, 10, 15),
-                child: Center(
-                    child: Text(
-                        '(Not applicable in case Form is purchased on payment in cash or by post from Institute Counter)',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 13,
-                            color: Colors.black)))),
-            Container(
-              child: Row(
-                children: [
-                  new Flexible(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(40, 10, 0, 1),
-                      child: TextField(
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.black),
+            body: Scrollbar(
+              //ADDED THIS
+              thumbVisibility: true, //always show scrollbar
+              thickness: 10, //width of scrollbar
+              radius: Radius.circular(10), //corner radius of scrollbar
+              scrollbarOrientation:
+                  ScrollbarOrientation.right, //which side to show scrollbar
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Container(
+                        padding: EdgeInsets.fromLTRB(50, 20, 50, 0),
+                        child: Center(
+                            child: Text('Demand draft Details',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                    color: Colors.black)))),
+                    Container(
+                        // padding: EdgeInsets.fromLTRB(50, 2, 50, 15)
+                        // padding: EdgeInsets.all(50),
+                        margin: EdgeInsets.only(
+                            left: 50,
+                            right: 50,
+                            top: 10,
+                            bottom: 10), //Add this line
+                        child: Center(
+                            child: Text(
+                                '(Not applicable in case Form is purchased on payment in cash or by post from Institute Counter)',
+                                textAlign: TextAlign.center, //Add this line
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 13,
+                                    color: Colors.black)))),
+                    Container(
+                      child: Row(
+                        children: [
+                          new Flexible(
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(40, 10, 0, 1),
+                              child: TextField(
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black),
 // controller: nameController,
-                          keyboardType: TextInputType.number,
-                          inputFormatters: <TextInputFormatter>[
-                            FilteringTextInputFormatter.digitsOnly
-                          ],
-                          maxLength: 6,
-                          decoration: const InputDecoration(
-                            filled: true,
-                            fillColor: Colors.white70,
-                            border: OutlineInputBorder(),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(width: 1, color: Colors.black),
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(10)),
+                                  keyboardType: TextInputType.number,
+                                  inputFormatters: <TextInputFormatter>[
+                                    FilteringTextInputFormatter.digitsOnly
+                                  ],
+                                  maxLength: 6,
+                                  decoration: const InputDecoration(
+                                    filled: true,
+                                    fillColor: Colors.white70,
+                                    border: OutlineInputBorder(),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          width: 1, color: Colors.black),
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(10)),
+                                    ),
+                                    labelText: "DD Number",
+                                  )),
                             ),
-                            labelText: "DD Number",
-                          )),
+                          ),
+                          new Flexible(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.fromLTRB(20, 10, 40, 20),
+                              child: TextFormField(
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black),
+                                  keyboardType: TextInputType.number,
+                                  inputFormatters: [
+                                    FilteringTextInputFormatter.digitsOnly,
+                                    LengthLimitingTextInputFormatter(6),
+                                    CardMonthInputFormatter(),
+                                  ],
+                                  decoration: const InputDecoration(
+                                      filled: true,
+                                      fillColor: Colors.white70,
+                                      border: OutlineInputBorder(),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            width: 1, color: Colors.black),
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(10)),
+                                      ),
+                                      labelText: "Date of Birth"
+                                      // errorText: 'Wrong Password',
+                                      )),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  new Flexible(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 10, 40, 20),
-                      child: TextFormField(
+                    Container(
+                        padding: const EdgeInsets.fromLTRB(40, 1, 40, 1),
+                        child: Text(
+                          "Amount= Rs1200/-",
                           style: const TextStyle(
                               fontWeight: FontWeight.bold, color: Colors.black),
-                          keyboardType: TextInputType.number,
-                          inputFormatters: [
-                            FilteringTextInputFormatter.digitsOnly,
-                            LengthLimitingTextInputFormatter(6),
-                            CardMonthInputFormatter(),
-                          ],
-                          decoration: const InputDecoration(
+                        )),
+                    Container(
+                        child: Column(children: [
+                      Container(
+                          padding: const EdgeInsets.fromLTRB(40, 10, 40, 0),
+                          child: TextField(
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.digitsOnly
+                            ],
+                            // controller: nameController,
+                            decoration: const InputDecoration(
                               filled: true,
-                              fillColor: Colors.white70,
+                              fillColor: Colors.white24,
                               border: OutlineInputBorder(),
                               enabledBorder: OutlineInputBorder(
                                 borderSide:
                                     BorderSide(width: 1, color: Colors.black),
                                 borderRadius:
-                                    const BorderRadius.all(Radius.circular(10)),
+                                    const BorderRadius.all(Radius.circular(20)),
                               ),
-                              labelText: "Date of Birth"
-                              // errorText: 'Wrong Password',
-                              )),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-                padding: const EdgeInsets.fromLTRB(40, 1, 40, 1),
-                child: Text(
-                  "Amount= Rs1200/-",
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.black),
-                )),
-            Container(
-                child: Column(children: [
-              Container(
-                  padding: const EdgeInsets.fromLTRB(40, 10, 40, 0),
-                  child: TextField(
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black),
-                    keyboardType: TextInputType.number,
-                    inputFormatters: <TextInputFormatter>[
-                      FilteringTextInputFormatter.digitsOnly
-                    ],
-                    // controller: nameController,
-                    decoration: const InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white24,
-                      border: OutlineInputBorder(),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(width: 1, color: Colors.black),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(20)),
-                      ),
-                      labelText: 'Bank',
-                      // errorText: 'Wrong User Name',
-                    ),
-                  )),
-              Container(
-                  padding: const EdgeInsets.fromLTRB(40, 30, 40, 15),
-                  child: TextField(
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black),
-                      // controller: nameController,
-                      decoration: const InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white70,
-                          border: OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 1, color: Colors.black),
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(20)),
-                          ),
-                          labelText: "City/Distt. of School"
-                          // errorText: 'Wrong Password',
-                          ))),
-              Container(
-                  padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
-                  child: TextField(
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black),
-                      // controller: nameController,
-                      decoration: const InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white70,
-                          border: OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 1, color: Colors.black),
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(20)),
-                          ),
-                          labelText: "State of the School"
-                          // errorText: 'Wrong Password',
-                          ))),
-              Container(
-                  padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
-                  child: TextField(
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black),
-                      // controller: nameController,
-                      decoration: const InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white70,
-                          border: OutlineInputBorder(),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 1, color: Colors.black),
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(20)),
-                          ),
-                          labelText: "Board"
-                          // errorText: 'Wrong Password',
-                          ))),
-              Container(
-                  padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
-                  child: TextField(
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black),
-                      // controller: nameController,
-                      keyboardType: TextInputType.number,
-                      inputFormatters: <TextInputFormatter>[
-                        FilteringTextInputFormatter.digitsOnly
-                      ],
-                      maxLength: 4,
-                      decoration: const InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white70,
-                        border: OutlineInputBorder(),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(width: 1, color: Colors.black),
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                        ),
-                        labelText: "Year of Passing",
-                        // errorText: 'Wrong Password',
-                      ))),
-              Container(
-                  padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
-                  child: TextField(
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black),
-                      // controller: nameController,
-                      keyboardType: TextInputType.number,
-                      inputFormatters: <TextInputFormatter>[
-                        FilteringTextInputFormatter.digitsOnly
-                      ],
-                      decoration: const InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white70,
-                        border: OutlineInputBorder(),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(width: 1, color: Colors.black),
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                        ),
-                        labelText: "10+2 Roll Number",
-                        // errorText: 'Wrong Password',
-                      ))),
-              Container(
-                  padding: EdgeInsets.fromLTRB(0, 15, 210, 15),
-                  child: Center(
-                      child: Text('Score in 10+2 Exam',
-                          style: TextStyle(
+                              labelText: 'Bank',
+                              // errorText: 'Wrong User Name',
+                            ),
+                          )),
+                      Container(
+                          padding: EdgeInsets.fromLTRB(50, 15, 50, 0),
+                          child: Center(
+                              child: Text('Bank Details',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                      color: Colors.black)))),
+                      Container(
+                        // padding: const EdgeInsets.fromLTRB(1, 1, 0, 15),
+                        margin: EdgeInsets.only(left: 50, right: 50, top: 10),
+                        child: Text(
+                          "Required for Refund in case of Withdrawl (ONLY PARENT/SELF)",
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                              fontSize: 13,
                               fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                              color: Colors.black)))),
-              Container(
-                padding: const EdgeInsets.fromLTRB(15, 15, 0, 0),
-                child: Text(
-                  "Mathematics",
-                  style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
-                ),
-              ),
-              Container(
-                child: Row(
-                  children: [
-                    new Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(5, 15, 20, 15),
-                        child: TextField(
+                              color: Colors.black),
+                        ),
+                      ),
+                      Container(
+                          padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
+                          child: TextField(
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black),
-// controller: nameController,
-                            keyboardType: TextInputType.number,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.digitsOnly
-                            ],
-                            maxLength: 3,
+                            // controller: nameController,
                             decoration: const InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white24,
+                              border: OutlineInputBorder(),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(width: 1, color: Colors.black),
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(20)),
+                              ),
+                              labelText: 'Name of the Account Holder',
+                              // errorText: 'Wrong User Name',
+                            ),
+                          )),
+                      Container(
+                          padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
+                          child: TextField(
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            // controller: nameController,
+                            decoration: const InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white24,
+                              border: OutlineInputBorder(),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(width: 1, color: Colors.black),
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(20)),
+                              ),
+                              labelText: 'Bank Name',
+                              // errorText: 'Wrong User Name',
+                            ),
+                          )),
+                      Container(
+                          padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
+                          child: TextField(
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                              decoration: const InputDecoration(
                                 filled: true,
                                 fillColor: Colors.white70,
                                 border: OutlineInputBorder(),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide:
                                       BorderSide(width: 1, color: Colors.black),
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(10)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
                                 ),
-                                labelText: "Max Marks"
-// errorText: 'Wrong Password',
-                                )),
-                      ),
-                    ),
-                    new Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
-                        child: TextField(
+                                labelText: "Account Number",
+                                // errorText: 'Wrong Password',
+                              ))),
+                      Container(
+                          padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
+                          child: TextField(
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black),
-// controller: nameController,
-                            keyboardType: TextInputType.number,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.digitsOnly
-                            ],
-                            maxLength: 3,
+                            // controller: nameController,
                             decoration: const InputDecoration(
-                                filled: true,
-                                fillColor: Colors.white70,
-                                border: OutlineInputBorder(),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(width: 1, color: Colors.black),
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(10)),
-                                ),
-                                labelText: "Marks Obtained"
-// errorText: 'Wrong Password',
-                                )),
-                      ),
-                    ),
+                              filled: true,
+                              fillColor: Colors.white24,
+                              border: OutlineInputBorder(),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(width: 1, color: Colors.black),
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(20)),
+                              ),
+                              labelText: 'Branch name',
+                              // errorText: 'Wrong User Name',
+                            ),
+                          )),
+                      Container(
+                          padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
+                          child: TextField(
+                              maxLines: 5,
+                              minLines: 1,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                              // controller: nameController,
+                              decoration: const InputDecoration(
+                                  filled: true,
+                                  fillColor: Colors.white70,
+                                  border: OutlineInputBorder(),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        width: 1, color: Colors.black),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(20)),
+                                  ),
+                                  labelText: "Address of the bank"
+                                  // errorText: 'Wrong Password',
+                                  ))),
+                      Container(
+                          padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
+                          child: TextField(
+                              maxLines: 5,
+                              minLines: 1,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                              // controller: nameController,
+                              decoration: const InputDecoration(
+                                  filled: true,
+                                  fillColor: Colors.white70,
+                                  border: OutlineInputBorder(),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        width: 1, color: Colors.black),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(20)),
+                                  ),
+                                  labelText: "IFSC Code"
+                                  // errorText: 'Wrong Password',
+                                  ))),
+                      Container(
+                          margin: EdgeInsets.only(bottom: 30, top: 10),
+                          child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.pushReplacementNamed(
+                                    //ADDED THIS
+                                    context,
+                                    '/SixthRoute');
+                              },
+                              child: Center(
+                                  widthFactor: 1,
+                                  heightFactor: 1,
+                                  child: Text(
+                                    'Next Page',
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black),
+                                  )))),
+                    ])),
+                    // Divider(height: 1),
                   ],
                 ),
               ),
-              Container(
-                padding: const EdgeInsets.fromLTRB(15, 15, 0, 0),
-                child: Text(
-                  "Physics",
-                  style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
-                ),
-              ),
-              Container(
-                child: Row(
-                  children: [
-                    new Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(5, 15, 20, 15),
-                        child: TextField(
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-// controller: nameController,
-                            keyboardType: TextInputType.number,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.digitsOnly
-                            ],
-                            maxLength: 3,
-                            decoration: const InputDecoration(
-                                filled: true,
-                                fillColor: Colors.white70,
-                                border: OutlineInputBorder(),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(width: 1, color: Colors.black),
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(10)),
-                                ),
-                                labelText: "Max Marks"
-// errorText: 'Wrong Password',
-                                )),
-                      ),
-                    ),
-                    new Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
-                        child: TextField(
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-// controller: nameController,
-                            keyboardType: TextInputType.number,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.digitsOnly
-                            ],
-                            maxLength: 3,
-                            decoration: const InputDecoration(
-                                filled: true,
-                                fillColor: Colors.white70,
-                                border: OutlineInputBorder(),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(width: 1, color: Colors.black),
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(10)),
-                                ),
-                                labelText: "Marks Obtained"
-// errorText: 'Wrong Password',
-                                )),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.fromLTRB(24, 15, 24, 15),
-                child: subject3(),
-              ),
-              Container(
-                child: Row(
-                  children: [
-                    new Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(5, 15, 20, 15),
-                        child: TextField(
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-// controller: nameController,
-                            keyboardType: TextInputType.number,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.digitsOnly
-                            ],
-                            maxLength: 3,
-                            decoration: const InputDecoration(
-                                filled: true,
-                                fillColor: Colors.white70,
-                                border: OutlineInputBorder(),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(width: 1, color: Colors.black),
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(10)),
-                                ),
-                                labelText: "Max Marks"
-// errorText: 'Wrong Password',
-                                )),
-                      ),
-                    ),
-                    new Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
-                        child: TextField(
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-// controller: nameController,
-                            keyboardType: TextInputType.number,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.digitsOnly
-                            ],
-                            maxLength: 3,
-                            decoration: const InputDecoration(
-                                filled: true,
-                                fillColor: Colors.white70,
-                                border: OutlineInputBorder(),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(width: 1, color: Colors.black),
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(10)),
-                                ),
-                                labelText: "Marks Obtained"
-// errorText: 'Wrong Password',
-                                )),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.fromLTRB(15, 15, 0, 0),
-                child: Text(
-                  "Total",
-                  style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
-                ),
-              ),
-              Container(
-                child: Row(
-                  children: [
-                    new Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(5, 15, 20, 15),
-                        child: TextField(
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-// controller: nameController,
-                            keyboardType: TextInputType.number,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.digitsOnly
-                            ],
-                            maxLength: 3,
-                            decoration: const InputDecoration(
-                                filled: true,
-                                fillColor: Colors.white70,
-                                border: OutlineInputBorder(),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(width: 1, color: Colors.black),
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(10)),
-                                ),
-                                labelText: "Max Marks"
-// errorText: 'Wrong Password',
-                                )),
-                      ),
-                    ),
-                    new Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
-                        child: TextField(
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-// controller: nameController,
-                            keyboardType: TextInputType.number,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.digitsOnly
-                            ],
-                            maxLength: 3,
-                            decoration: const InputDecoration(
-                                filled: true,
-                                fillColor: Colors.white70,
-                                border: OutlineInputBorder(),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(width: 1, color: Colors.black),
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(10)),
-                                ),
-                                labelText: "Marks Obtained"
-// errorText: 'Wrong Password',
-                                )),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/SixthRoute');
-                  },
-                  child: Center(
-                      widthFactor: 1,
-                      heightFactor: 1,
-                      child: Text(
-                        'Next Page',
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.black),
-                      ))),
-            ])),
-            // Divider(height: 1),
-          ],
-        ),
-      ),
-    ));
+            )));
     ;
-  }
-}
-
-class subject3 extends StatefulWidget {
-  const subject3({Key? key}) : super(key: key);
-
-  @override
-  State<subject3> createState() => _subject3State();
-}
-
-class _subject3State extends State<subject3> {
-  String dropdownvalue = 'Subject3';
-  // List of items in our dropdown menu
-  var items = [
-    'Subject3',
-    'Chemistry',
-    'Computer Science',
-    'Informatics Practices',
-    'Information Technology',
-    'Biology',
-    'Biotechnology',
-    'Technical Vocational Subjects',
-    'Agriculture',
-    'Engineering Graphics and Business Studies',
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return DropdownButton(
-      // Initial Value
-      value: dropdownvalue,
-      // Down Arrow Icon
-      icon: const Icon(Icons.keyboard_arrow_down),
-
-      // Array list of items
-      items: items.map((String items) {
-        return DropdownMenuItem(
-          value: items,
-          child: Text(items),
-        );
-      }).toList(),
-      // After selecting the desired option,it will
-      // change button value to selected value
-      onChanged: (String? newValue) {
-        setState(() {
-          dropdownvalue = newValue!;
-        });
-      },
-      borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-      elevation: 12,
-      style: TextStyle(
-          fontWeight: FontWeight.bold, color: Colors.black, fontSize: 15),
-    );
   }
 }
 
