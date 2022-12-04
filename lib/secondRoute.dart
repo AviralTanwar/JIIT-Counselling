@@ -39,7 +39,7 @@ class SecondRoute extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(30, 0, 30, 50),
               child: Image(
                 image: NetworkImage(
-                    'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/330px-QR_code_for_mobile_English_Wikipedia.svg.png'),
+                    'https://firebasestorage.googleapis.com/v0/b/jiit-counselling-62.appspot.com/o/Shivansh.png?alt=media&token=176af27a-3d42-46fd-895e-a22d4ae2ebf6'),
               ),
             ),
             ElevatedButton(
